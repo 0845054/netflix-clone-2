@@ -2,12 +2,53 @@ import React from "react";
 import NavBar from "../navBar/NavBar";
 import Hero from "../../assets/Hero.png";
 import Popcorn from "../../assets/Popcorn.png";
+import Content1 from "../../assets/Content1.png";
+import Content2 from "../../assets/Content2.png";
+import Content3 from "../../assets/Content3.png";
+import Content4 from "../../assets/Content4.png";
 
 import "./Landing.css";
+import { useNavigate } from "react-router-dom";
+import { wrap } from "module";
 
 type Props = {};
 
 const Landing = (props: Props) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/cover", { replace: true });
+  };
+
+  const contentList = [
+    {
+      id: 1,
+      title: "Enjoy on your TV",
+      subTitle:
+        "Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blue-ray players, and more.",
+      image: Content1,
+    },
+    {
+      id: 2,
+      title: "Watch everywhere",
+      subTitle:
+        "Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.",
+      image: Content2,
+    },
+    {
+      id: 3,
+      title: "Create profiles for kids",
+      subTitle:
+        "Send kids on adventures with their favourite characters in a space made just for them--free with your membership.",
+      image: Content3,
+    },
+    {
+      id: 4,
+      title: "Download your shows to watch offline",
+      subTitle: "Watch on plane, train, or submarine...",
+      image: Content4,
+    },
+  ];
   return (
     <div className="landing-container">
       <NavBar />
@@ -43,6 +84,30 @@ const Landing = (props: Props) => {
             Learn More {">"}
           </a>
         </div>
+      </div>
+      <div className="hero3-container">
+        {contentList.map((c) => {
+          var isEven = c.id % 2 === 0;
+          return (
+            <div className="hero3-card">
+              <img
+                className={isEven ? "hero3-left" : "hero3-right"}
+                src={c.image}
+                alt="missing"
+              />
+              <div
+                className={
+                  isEven
+                    ? "hero3-right hero3-info"
+                    : "hero3-left hero3-card-info"
+                }
+              >
+                <h1 style={{ fontSize: 48 }}>{c.title}</h1>
+                <p style={{ fontSize: 24, textWrap: "wrap" }}>{c.subTitle}</p>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
