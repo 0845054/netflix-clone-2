@@ -3,6 +3,7 @@
   height: fit-content;
   background-color: inherit;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -74,4 +75,38 @@
 .hero1-email-btn:hover {
   cursor: pointer;
   background-color: var(--secondary-red-200);
+}
+
+.hero2-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 32px;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 4, 19, 0.6),
+    rgb(14, 27, 79, 0.6),
+    rgb(229, 9, 20, 0.6),
+    rgb(14, 27, 79, 0.6),
+    rgba(0, 4, 19, 0.6)
+  );
+}
+
+.hero2-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: start;
+  justify-content: center;
+}
+
+.hero2-link {
+  color: var(--secondary-blue-200);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.hero2-link:hover {
+  cursor: pointer;
+  color: var(--secondary-blue-100);
 }

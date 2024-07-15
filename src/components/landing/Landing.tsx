@@ -1,6 +1,7 @@
 import React from "react";
 import NavBar from "../navBar/NavBar";
 import Hero from "../../assets/Hero.png";
+import Popcorn from "../../assets/Popcorn.png";
 
 import "./Landing.css";
 
@@ -27,6 +28,20 @@ const Landing = (props: Props) => {
             />
             <button className="hero1-email-btn">Get Started {">"}</button>
           </div>
+        </div>
+      </div>
+      <div className="hero2-container">
+        <img src={Popcorn} alt="missing" />
+        <div className="hero2-info">
+          <p style={{ fontSize: 20, fontWeight: 600, margin: 0 }}>
+            The Netflix you love for just $6.99.
+          </p>
+          <p style={{ fontSize: 18, fontWeight: 400, margin: 0 }}>
+            Get the standard with ads plan.
+          </p>
+          <a href="" className="hero2-link">
+            Learn More {">"}
+          </a>
         </div>
       </div>
     </div>
