@@ -1,13 +1,18 @@
 import React from "react";
 import Logo from "../../assets/Logo.png";
 import "./NavBar.css";
+import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
 const NavBar = (props: Props) => {
+  const navigate = useNavigate();
+  const onClick = () => {
+    navigate("/signin");
+  };
   return (
     <div className="navbar-container">
-      <img src={Logo} width={148} height={40} />
+      <img src={Logo} alt="missing logo" width={148} height={40} />
       <span className="navbar-right-container">
         <select className="language-select">
           <option className="language-option">English</option>
@@ -15,7 +20,9 @@ const NavBar = (props: Props) => {
           <option className="language-option">Japanese</option>
           <option className="language-option">Korean</option>
         </select>
-        <button className="app-red-btn navbar-sigin-btn">Sign In</button>
+        <button className="app-red-btn navbar-sigin-btn" onClick={onClick}>
+          Sign In
+        </button>
       </span>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../navBar/NavBar";
+import NavBar from "../../components/navBar/NavBar";
 import Hero from "../../assets/Hero.png";
 import Popcorn from "../../assets/Popcorn.png";
 import Content1 from "../../assets/Content1.png";
@@ -10,6 +10,7 @@ import Content4 from "../../assets/Content4.png";
 import "./Landing.css";
 import { useNavigate } from "react-router-dom";
 import { wrap } from "module";
+import Footer from "../../components/footer/Footer";
 
 type Props = {};
 
@@ -80,7 +81,7 @@ const Landing = (props: Props) => {
           <p style={{ fontSize: 18, fontWeight: 400, margin: 0 }}>
             Get the standard with ads plan.
           </p>
-          <a href="" className="hero2-link">
+          <a href="/" className="hero2-link">
             Learn More {">"}
           </a>
         </div>
@@ -109,6 +110,7 @@ const Landing = (props: Props) => {
           );
         })}
       </div>
+      <Footer />
     </div>
   );
 };
