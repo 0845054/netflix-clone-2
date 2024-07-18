@@ -5,20 +5,7 @@ import Landing from "../pages/landing/Landing";
 import ProtectedRoute from "./ProtectedRoute";
 import SignIn from "../pages/signIn/SignIn";
 import ProfilePage from "../pages/profilePage/ProfilePage";
-
-// Function to get the access token from cookies
-const getAccessToken = () => {
-  return Cookies.get("token");
-};
-
-// Function to check if the user is authenticated
-const isAuthenticated = () => {
-  console.log("Authenticating...");
-  // Send api verify jwt.
-
-  console.log(getAccessToken());
-  return !!getAccessToken();
-};
+import { verify } from "../services/api.service";
 
 // Create the router configuration
 const router = createBrowserRouter([
@@ -32,7 +19,7 @@ const router = createBrowserRouter([
     element: <SignIn />,
   },
   {
-    element: <ProtectedRoute isAuthenticated={isAuthenticated()} />,
+    element: <ProtectedRoute />,
     children: [
       {
         path: "/profile",

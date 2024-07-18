@@ -2,6 +2,7 @@ import React from "react";
 import Logo from "../../assets/Logo.png";
 import "./NavBar.css";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 type Props = {};
 
@@ -9,6 +10,10 @@ const NavBar = (props: Props) => {
   const navigate = useNavigate();
   const onClick = () => {
     navigate("/signin");
+  };
+
+  const onClickToken = () => {
+    console.log(Cookies.get("token"));
   };
   return (
     <div className="navbar-container">
@@ -23,6 +28,7 @@ const NavBar = (props: Props) => {
         <button className="app-red-btn navbar-sigin-btn" onClick={onClick}>
           Sign In
         </button>
+        <button onClick={onClickToken}>Show Token</button>
       </span>
     </div>
   );

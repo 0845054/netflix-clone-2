@@ -17,11 +17,12 @@ const SignIn = (props: Props) => {
   });
 
   const onSubmitForm = async () => {
-    const response: any = await login(form.email, form.password);
-    if (response.ok) {
-      const token = response.json().token;
-      // Set the JWT in a cookie
-      Cookies.set("token", token, { expires: 1, secure: true });
+    const res = await login(form.email, form.password);
+    console.log(res);
+    if (res !== null) {
+      // secure: true. Cookies will only work for an HTTPS domain.
+      Cookies.set("token", res.token, { expires: 7 });
+
       navigate("/profile");
     } else {
       console.log("Error form");
