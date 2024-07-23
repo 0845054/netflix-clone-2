@@ -2,14 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Landing from "./pages/landing/Landing";
+import { AuthWrapper } from "./auth/auth/AuthWrapper";
+import { RouterProvider } from "react-router-dom";
+import router from "./routes/Router";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <AuthWrapper>
+      <RouterProvider router={router} />
+    </AuthWrapper>
   </React.StrictMode>
 );

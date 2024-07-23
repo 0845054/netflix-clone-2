@@ -1,21 +1,15 @@
 import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
+import { AuthData } from "../auth/auth/AuthWrapper";
 
-const getAccessToken = () => {
-  return Cookies.get("token");
-};
-
-const auth = async () => {
-  // Send API request to verify JWT
-  // Return a promise that resolves to true if the token is valid, false otherwise
-  return !!getAccessToken();
+const auth = () => {
+  const { user }: any = AuthData();
+  return user.isAuthenticated;
 };
 
 const ProtectedRoute = () => {
   const isAuthenticated = auth();
-  console.log("In protected route.");
-  console.log("isAuthenticated = " + isAuthenticated);
   if (!isAuthenticated) {
     return <Navigate to="/" replace />;
   }

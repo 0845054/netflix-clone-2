@@ -1,31 +1,29 @@
 import React, { useState } from "react";
 import Hero from "../../assets/Hero.png";
 import "./SignIn.css";
-import { login } from "../../services/api.service";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import NavBar from "../../components/navBar/NavBar";
 import Footer from "../../components/footer/Footer";
+import { loginApi } from "../../services/api.service";
+import { AuthData } from "../../auth/auth/AuthWrapper";
 
 type Props = {};
 
 const SignIn = (props: Props) => {
   const navigate = useNavigate();
+  const { login }: any = AuthData();
+
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
 
-  const onSubmitForm = async () => {
-    const res = await login(form.email, form.password);
-    console.log(res);
-    if (res !== null) {
-      // secure: true. Cookies will only work for an HTTPS domain.
-      Cookies.set("token", res.token, { expires: 7 });
-
-      navigate("/profile");
-    } else {
-      console.log("Error form");
+  const onSubmitForm = () => {
+    try {
+      login(form.email, form.password).then(() => navigate("/nf/profile"));
+    } catch (e) {
+      console.log(e);
     }
   };
 
@@ -76,7 +74,7 @@ const SignIn = (props: Props) => {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

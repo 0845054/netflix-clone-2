@@ -17,10 +17,6 @@ type Props = {};
 const Landing = (props: Props) => {
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    navigate("/cover", { replace: true });
-  };
-
   const contentList = [
     {
       id: 1,
@@ -90,7 +86,7 @@ const Landing = (props: Props) => {
         {contentList.map((c) => {
           var isEven = c.id % 2 === 0;
           return (
-            <div className="hero3-card">
+            <div className="hero3-card" key={c.id}>
               <img
                 className={isEven ? "hero3-left" : "hero3-right"}
                 src={c.image}

@@ -21,7 +21,7 @@ const profileCard = (name: string, image: string) => {
     cn = "add-profile-img";
   }
   return (
-    <div className="profile-card">
+    <div className="profile-card" key={name}>
       <img src={image} alt="Missing" className={cn} />
       <div className="profile-name">{name}</div>
     </div>

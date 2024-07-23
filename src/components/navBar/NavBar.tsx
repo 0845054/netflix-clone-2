@@ -13,7 +13,7 @@ const NavBar = (props: Props) => {
   };
 
   const onClickToken = () => {
-    console.log(Cookies.get("token"));
+    navigate("/nf/profile");
   };
   return (
     <div className="navbar-container">

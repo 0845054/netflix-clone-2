@@ -5,43 +5,37 @@ import Landing from "../pages/landing/Landing";
 import ProtectedRoute from "./ProtectedRoute";
 import SignIn from "../pages/signIn/SignIn";
 import ProfilePage from "../pages/profilePage/ProfilePage";
-import { verify } from "../services/api.service";
+import App from "../App";
 
 // Create the router configuration
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Landing />,
-    index: true,
-  },
-  {
-    path: "/signin",
-    element: <SignIn />,
-  },
-  {
-    element: <ProtectedRoute />,
+    element: <App />,
     children: [
       {
-        path: "/profile",
-        element: <ProfilePage />,
+        path: "/",
+        element: <Landing />,
       },
-      // {
-      //   path: "/chat",
-      //   element: <Chat />,
-      // },
-      // {
-      //   path: "/video",
-      //   element: <Video />,
-      // },
-      // {
-      //   path: "/room",
-      //   element: <Room />,
-      // },
+      {
+        path: "/signin",
+        element: <SignIn />,
+        index: true,
+      },
+      {
+        element: <ProtectedRoute />,
+        path: "/nf",
+        children: [
+          {
+            path: "/nf/profile",
+            element: <ProfilePage />,
+          },
+        ],
+      },
+      {
+        path: "*",
+        element: <p>404 Error - Nothing here...</p>,
+      },
     ],
-  },
-  {
-    path: "*",
-    element: <p>404 Error - Nothing here...</p>,
   },
 ]);
 

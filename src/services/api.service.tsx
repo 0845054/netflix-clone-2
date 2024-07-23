@@ -1,4 +1,6 @@
-export const login = async (e: string, p: string) => {
+import Cookies from "js-cookie";
+
+export const loginApi = async (e: string, p: string) => {
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -13,20 +15,25 @@ export const login = async (e: string, p: string) => {
     });
 };
 
-//  credentials: 'include'
-
-export const verify = async () => {
-  const requestOptions: RequestInit = {
-    credentials: "same-origin",
+export const verifyApi = async () => {
+  const token = getToken();
+  const url = "http://localhost:4000/api/verify";
+  const request = {
     method: "GET",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: token ? `Bearer ${token}` : "",
+    },
   };
 
-  return await fetch("http://localhost:4000/api/verify", requestOptions)
-    .then((res) => {
-      return res.status === 200 ? res.json() : null;
-    })
+  return await fetch(url, request)
+    .then((res) => res.json())
     .catch((e) => {
-      return null;
+      console.log(e);
     });
+};
+
+const getToken = () => {
+  return Cookies.get("token");
 };

@@ -54,6 +54,7 @@
   /* background-color: var(--grey-150); */
   color: var(--primary-white);
   font-family: Arial, Helvetica, sans-serif;
+  height: 100vh;
 }
 
 .img {
